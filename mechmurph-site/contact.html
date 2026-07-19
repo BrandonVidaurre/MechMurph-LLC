@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — MechMurph</title>
+  <meta name="description" content="Tell us what your machine is doing and we'll tell you straight. Contact MechMurph small-engine repair in San Antonio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">MECHMURPH</a>
+      <nav class="nav" id="nav">
+        <a href="shop.html">Shop</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="current">Contact</a>
+        <a class="cart-link" href="cart.html">Cart (0)</a>
+      </nav>
+      <a class="btn-book" href="appointments.html">Book now</a>
+      <button class="menu-toggle" data-menu-toggle aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <h1>Tell us what it's doing</h1>
+    <p class="lede">Not sure what's wrong? Tell us what your machine's doing — won't start, won't stay running, cutting uneven — and we'll tell you straight. Fill out the form and Murph will get back to you with next steps. Prefer to talk? Call or text the shop at <strong>[210-XXX-XXXX]</strong>.</p>
+
+    <!-- NOTE: this form is front-end only. To actually receive submissions,
+         point the `action` at a form service (Formspree, Basin, Netlify Forms,
+         etc.) or wire it to your info@mechmurph.com inbox. -->
+    <form class="form" action="#" method="post">
+      <div class="field-row">
+        <div class="field">
+          <label for="first">First name <span class="req">(required)</span></label>
+          <input id="first" name="first" type="text" required />
+        </div>
+        <div class="field">
+          <label for="last">Last name <span class="req">(required)</span></label>
+          <input id="last" name="last" type="text" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email <span class="req">(required)</span></label>
+        <input id="email" name="email" type="email" required />
+      </div>
+
+      <div class="field">
+        <label for="machine">What machine? (make/model if you know it)</label>
+        <input id="machine" name="machine" type="text" placeholder="e.g. Toro Recycler 22&quot; self-propelled" />
+      </div>
+
+      <div class="field">
+        <label for="message">Message <span class="req">(required)</span></label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button class="btn btn-green" type="submit">Send</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <div class="footer-brand">MechMurph</div>
+        <p>Small-engine repair · San Antonio, TX</p>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:info@mechmurph.com">info@mechmurph.com</a><br />
+        <span class="small">[210-XXX-XXXX] &middot; Walk-ins welcome</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
