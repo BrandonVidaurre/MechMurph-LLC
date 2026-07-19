@@ -1,0 +1,405 @@
+/* =========================================================
+   MechMurph — shared styles
+   Edit colors and fonts here once; every page updates.
+   ========================================================= */
+
+:root {
+  --bg:        #e9e7e2;   /* warm light grey page background */
+  --ink:       #191917;   /* near-black text + headlines     */
+  --ink-soft:  #43423d;   /* body paragraphs                 */
+  --muted:     #7c7a73;   /* captions, footnotes             */
+  --green:     #2e9d48;   /* MechMurph green (buttons/brand) */
+  --green-dark:#25823b;   /* hover state                     */
+  --line:      #cbc9c3;   /* hairlines + input borders       */
+  --white:     #ffffff;   /* cards / panels                  */
+  --hero-text: #f3f1ec;   /* big light hero words            */
+
+  --wrap: 1080px;         /* content column width            */
+  --header-h: 76px;
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- headings ---------- */
+h1, h2 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+}
+
+h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+
+p { color: var(--ink-soft); margin: 0 0 22px; max-width: 62ch; }
+
+/* =========================================================
+   HEADER  (this markup is duplicated on every page)
+   ========================================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+}
+.header-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand.is-active { color: var(--green); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: auto;
+}
+.nav a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { border-bottom-color: var(--ink); }
+.nav a.current { border-bottom-color: var(--ink); }
+
+.cart-link { white-space: nowrap; }
+
+/* green BOOK NOW pill */
+.btn-book {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 12px 26px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.btn-book:hover { background: var(--green-dark); }
+
+/* mobile menu toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 15px 34px;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-dark); }
+.btn-dark { background: #6f6d67; color: #fff; }
+.btn-dark:hover { background: #5b5952; }
+
+/* =========================================================
+   SECTIONS / LAYOUT
+   ========================================================= */
+.section { padding: 72px 0; }
+.section-tight { padding: 48px 0; }
+
+.lede { font-size: 1.15rem; max-width: 60ch; }
+
+/* photo placeholder — swap the inner <img> or the whole block
+   for your own photo. Styled so the layout looks right empty. */
+.photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background:
+    repeating-linear-gradient(45deg, #dedcd6 0 12px, #d7d5cf 12px 24px);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 24px;
+}
+.photo.square { aspect-ratio: 1 / 1; }
+.photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+
+/* =========================================================
+   HOME
+   ========================================================= */
+.home-hero {
+  padding: 40px 0 96px;
+  text-align: center;
+}
+.home-hero .photo {
+  max-width: 360px;
+  margin: 8px auto 90px;
+  aspect-ratio: 1 / 1;
+}
+.hero-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+}
+.hero-lines span {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  color: var(--hero-text);
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.hero-sub {
+  margin-top: 64px;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+.hero-cta { margin-top: 28px; }
+
+/* =========================================================
+   SERVICES / ABOUT (headline + prose + image)
+   ========================================================= */
+.prose-block { max-width: 760px; }
+.prose-block p { font-size: 1.12rem; }
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 34px 0 0;
+  border-top: 1px solid var(--line);
+  max-width: 640px;
+}
+.service-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.service-list .price {
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.signature {
+  margin-top: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.signature span {
+  display: block;
+  font-weight: 600;
+  text-transform: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
+
+/* =========================================================
+   SHOP
+   ========================================================= */
+.product { max-width: 720px; margin: 0 auto; }
+.product .photo { aspect-ratio: 4 / 3; margin-bottom: 26px; }
+.product h2 { margin-bottom: 8px; }
+.product .price { font-size: 1.4rem; font-weight: 700; margin: 0 0 24px; }
+.product p { margin-bottom: 28px; }
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+.form { max-width: 720px; margin-top: 20px; }
+.field { margin-bottom: 26px; }
+.field label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.field .req { color: var(--muted); font-weight: 400; }
+.field input,
+.field textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 16px 18px;
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 26px;
+  color: var(--ink);
+}
+.field textarea { border-radius: 20px; min-height: 170px; resize: vertical; }
+.field input:focus,
+.field textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.field-row { display: flex; gap: 20px; }
+.field-row .field { flex: 1; }
+
+/* =========================================================
+   APPOINTMENTS
+   ========================================================= */
+.appt-panel {
+  background: var(--white);
+  border-radius: 6px;
+  padding: 34px;
+  margin-top: 36px;
+  box-shadow: 0 1px 0 var(--line);
+}
+.appt-panel h3 {
+  text-align: center;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+.appt-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 4px;
+  border-top: 1px solid var(--line);
+}
+.appt-row:first-of-type { border-top: 0; }
+.appt-row .meta strong { display: block; font-size: 1.1rem; }
+.appt-row .meta span { color: var(--muted); }
+.appt-row .book {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.appt-row .book:hover { color: var(--ink); }
+
+/* =========================================================
+   CART
+   ========================================================= */
+.cart-item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cart-item .photo { aspect-ratio: 1/1; width: 120px; }
+.cart-item .qty { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+.cart-item .line-price { font-weight: 700; }
+.cart-totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0;
+}
+.cart-totals .label { font-weight: 600; }
+.cart-totals .amount { font-size: 1.6rem; font-weight: 800; }
+.cart-actions { text-align: right; }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 56px 0 64px;
+  margin-top: 40px;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+}
+.footer-brand { font-weight: 800; font-size: 1.6rem; text-transform: uppercase; }
+.footer-brand + p { color: var(--muted); margin-top: 8px; }
+.footer-contact { text-align: right; }
+.footer-contact a { text-decoration: none; font-weight: 700; }
+.footer-contact .small { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+@media (max-width: 760px) {
+  .menu-toggle { display: block; order: 3; }
+  .nav {
+    position: fixed;
+    inset: var(--header-h) 0 auto 0;
+    background: var(--bg);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 28px 32px;
+    border-bottom: 1px solid var(--line);
+    display: none;
+  }
+  .nav.open { display: flex; }
+  .field-row { flex-direction: column; gap: 0; }
+  .cart-item { grid-template-columns: 90px 1fr; }
+  .cart-item .line-price { grid-column: 2; }
+  .footer-inner { flex-direction: column; }
+  .footer-contact { text-align: left; }
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
