@@ -4,11 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop — MechMurph</title>
-  <meta name="description" content="Professionally refurbished mowers, ready to run. Shop MechMurph in San Antonio." />
+  <meta name="description" content="Refurbished mowers, tested and ready to mow. Honda, Poulan Pro, and Bolens — serviced by Murph in San Antonio." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Shop-only styling. Lives here so you can drop this file in without touching styles.css. -->
+  <style>
+    .shop-head { max-width: 640px; }
+    .shop-head h1 { color: var(--green); margin-bottom: 14px; }
+    .shop-head .lede { margin: 0; }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 44px;
+    }
+
+    .mower-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .mower-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(25,25,23,.10); }
+
+    /* Clickable flyer */
+    .mower-card .flyer {
+      display: block;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      cursor: zoom-in;
+      background: #111;
+      line-height: 0;
+    }
+    .mower-card .flyer img {
+      width: 100%;
+      height: auto;
+      transition: opacity .18s ease;
+    }
+    .mower-card .flyer:hover img { opacity: .93; }
+    .mower-card .flyer:focus-visible { outline: 3px solid var(--green); outline-offset: -3px; }
+
+    /* Info bar under the flyer */
+    .mower-info { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .mower-info .title-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    }
+    .mower-info h2 {
+      font-size: 1.15rem; margin: 0; text-transform: none; letter-spacing: -0.01em; line-height: 1.15;
+    }
+    .price-tag {
+      background: var(--green); color: #fff;
+      font-weight: 800; font-size: 1.15rem;
+      padding: 6px 14px; border-radius: 8px; white-space: nowrap;
+    }
+    .mower-info .spec { color: var(--ink-soft); font-size: 0.98rem; margin: 0; }
+    .mower-info .badge {
+      align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--green-dark);
+      background: color-mix(in srgb, var(--green) 12%, transparent);
+      padding: 5px 11px; border-radius: 999px;
+    }
+    .mower-info .badge::before { content: "\2713"; font-size: 0.85rem; }
+    .mower-info .actions { margin-top: auto; display: flex; gap: 10px; padding-top: 4px; }
+    .mower-info .actions .btn { padding: 12px 22px; font-size: 0.9rem; flex: 1; text-align: center; }
+
+    .shop-note {
+      margin-top: 40px; color: var(--muted); font-size: 0.95rem; max-width: 640px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 90;
+      background: rgba(17,17,15,.86);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: min(560px, 92vw); max-height: 92vh;
+      width: auto; height: auto;
+      border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .lightbox .close {
+      position: absolute; top: 18px; right: 22px;
+      background: none; border: 0; color: #fff;
+      font-size: 2.2rem; line-height: 1; cursor: pointer;
+    }
+
+    @media (max-width: 900px) { .shop-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .shop-grid { grid-template-columns: 1fr; gap: 26px; } }
+  </style>
 </head>
 <body>
 
@@ -28,16 +123,84 @@
   </header>
 
   <main class="wrap section">
-    <div class="product">
-      <div class="photo" role="img" aria-label="Product photo placeholder">
-        Replace with: the refurbished Toro mower photo
-      </div>
-      <h2>Shop Coming Soon...<Soon class=""></Soon></h2>
-      <p class="price"></p>
-      <p>Cleaned, serviced, and tested by Murph — new blade, fresh oil, tuned carburetor, and a pull that starts on the first or second try. Ready to cut the day you bring it home.</p>
-      
+    <div class="shop-head">
+      <h1>Refurbished &amp; ready to mow</h1>
+      <p class="lede">Every mower here was cleaned, serviced, and tested by Murph — carburetor, spark plug, oil, and a pull that starts. Tap any listing to see the full rundown. Limited stock; first come, first served.</p>
     </div>
+
+    <div class="shop-grid">
+
+      <!-- ===== Honda HRR216 ===== -->
+      <article class="mower-card">
+        <button class="flyer" type="button"
+                data-full="images/honda-hrr216.jpg"
+                aria-label="View full details for the Honda HRR216 mower">
+          <img src="images/honda-hrr216.jpg" alt="Refurbished Honda HRR216 self-propelled lawn mower, $350" loading="lazy" />
+        </button>
+        <div class="mower-info">
+          <span class="badge">Tested &amp; tuned</span>
+          <div class="title-row">
+            <h2>Honda HRR216 Mower</h2>
+            <span class="price-tag">$350</span>
+          </div>
+          <p class="spec">Adjustable-speed self-propel, new back wheels, new spark plug &amp; carburetor. Starts on the first pull, cold or warm.</p>
+          <div class="actions">
+            <!-- Swap "#" for a Stripe Payment Link when you're ready to take payment. -->
+            <a class="btn btn-green" href="contact.html">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Poulan Pro 22" ===== -->
+      <article class="mower-card">
+        <button class="flyer" type="button"
+                data-full="images/poulan-pro-22.jpg"
+                aria-label="View full details for the Poulan Pro 22 inch self-propelled mower">
+          <img src="images/poulan-pro-22.jpg" alt="Refurbished Poulan Pro 22 inch self-propelled mulching mower, $200" loading="lazy" />
+        </button>
+        <div class="mower-info">
+          <span class="badge">Tested &amp; tuned</span>
+          <div class="title-row">
+            <h2>Poulan Pro 22&quot; Self-Propelled</h2>
+            <span class="price-tag">$200</span>
+          </div>
+          <p class="spec">6.5 HP Briggs &amp; Stratton, mulch or side-discharge. New spark plug, carburetor, air filter, and engine-stop cable.</p>
+          <div class="actions">
+            <a class="btn btn-green" href="contact.html">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Vintage Bolens 19" ===== -->
+      <article class="mower-card">
+        <button class="flyer" type="button"
+                data-full="images/bolens-19.jpg"
+                aria-label="View full details for the vintage 19 inch Bolens mulcher">
+          <img src="images/bolens-19.jpg" alt="Refurbished vintage 19 inch Bolens mulching mower, $175" loading="lazy" />
+        </button>
+        <div class="mower-info">
+          <span class="badge">Tested &amp; tuned</span>
+          <div class="title-row">
+            <h2>Vintage 19&quot; Bolens Mulcher</h2>
+            <span class="price-tag">$175</span>
+          </div>
+          <p class="spec">A solid old workhorse brought back to life — new carburetor, new ignition coil &amp; spark plug, fresh oil.</p>
+          <div class="actions">
+            <a class="btn btn-green" href="contact.html">Reserve</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="shop-note">Want one held? Hit <strong>Reserve</strong> or call the shop at <a href="tel:2104429193">210-442-9193</a>. We don't ship — pickup in San Antonio.</p>
   </main>
+
+  <!-- Full-flyer viewer -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mower details">
+    <button class="close" type="button" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
@@ -47,11 +210,40 @@
       </div>
       <div class="footer-contact">
         <a href="mailto:info@mechmurph.com">info@mechmurph.com</a><br />
-        <span class="small">[210-442-9193] &middot; Hour of Operations: 8AM-8PM</span>
+        <span class="small">210-442-9193 &middot; Hours 8AM&ndash;8PM</span>
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Lightbox: click a flyer to see the full-size version.
+    (function () {
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightbox-img');
+      function open(src, alt) {
+        lbImg.src = src; lbImg.alt = alt || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('.flyer').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var img = btn.querySelector('img');
+          open(btn.getAttribute('data-full'), img ? img.alt : '');
+        });
+      });
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target.classList.contains('close')) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) close();
+      });
+    })();
+  </script>
 </body>
 </html>
