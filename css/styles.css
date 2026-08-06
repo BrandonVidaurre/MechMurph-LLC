@@ -366,6 +366,7 @@ p { color: var(--ink-soft); margin: 0 0 22px; max-width: 62ch; }
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 32px;
   justify-content: space-between;
 }
@@ -374,6 +375,53 @@ p { color: var(--ink-soft); margin: 0 0 22px; max-width: 62ch; }
 .footer-contact { text-align: right; }
 .footer-contact a { text-decoration: none; font-weight: 700; }
 .footer-contact .small { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+
+
+/* ---------- footer digital card button ---------- */
+.footer-card { text-align: center; }
+.btn-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  transition: background 0.15s ease;
+}
+.btn-card:hover { background: var(--green-dark); }
+.btn-card svg { width: 20px; height: 20px; stroke: #fff; flex: none; }
+.footer-card .small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+/* ---------- contact page card callout ---------- */
+.contact-card-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: 720px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px 28px;
+  margin: 8px 0 40px;
+}
+.contact-card-callout .cc-text strong { display: block; font-size: 1.15rem; }
+.contact-card-callout .cc-text p { margin: 4px 0 0; font-size: 0.98rem; }
+.btn-card-lg { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.btn-card-lg svg { width: 20px; height: 20px; stroke: #fff; flex: none; }
 
 /* =========================================================
    MOBILE
@@ -397,6 +445,8 @@ p { color: var(--ink-soft); margin: 0 0 22px; max-width: 62ch; }
   .cart-item .line-price { grid-column: 2; }
   .footer-inner { flex-direction: column; }
   .footer-contact { text-align: left; }
+  .footer-card { text-align: left; }
+  .contact-card-callout { flex-direction: column; align-items: flex-start; }
 }
 
 /* =========================================================

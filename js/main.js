@@ -33,7 +33,10 @@ const MM_CART_KEY = "mm_cart";
 
 function mmGetCart() {
   try {
-    return JSON.parse(localStorage.getItem(MM_CART_KEY)) || [];
+    const raw = JSON.parse(localStorage.getItem(MM_CART_KEY)) || [];
+    // Drop anything that isn't a real, in-stock catalog item with a valid qty.
+    // This prevents phantom counts from leftover/older cart data.
+    return raw.filter((i) => i && MM_PRODUCTS[i.id] && i.qty > 0);
   } catch (_) {
     return [];
   }
@@ -186,6 +189,9 @@ document.addEventListener("click", function (e) {
 
 /* Init on every page */
 document.addEventListener("DOMContentLoaded", function () {
+  // Write back the cleaned cart so any stale/orphaned data in the
+  // browser from an earlier build is pruned automatically on first load.
+  localStorage.setItem(MM_CART_KEY, JSON.stringify(mmGetCart()));
   mmUpdateCartCount();
   mmRenderCart();
 });

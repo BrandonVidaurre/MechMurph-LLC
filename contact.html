@@ -34,7 +34,27 @@
     <!-- NOTE: this form is front-end only. To actually receive submissions,
          point the `action` at a form service (Formspree, Basin, Netlify Forms,
          etc.) or wire it to your info@mechmurph.com inbox. -->
-    <form class="form" action="#" method="post">
+    <div class="contact-card-callout">
+      <div class="cc-text">
+        <strong>Rather tap than type?</strong>
+        <p>Save Murph's digital card &mdash; phone, email, and shop details, all in one tap.</p>
+      </div>
+      <a class="btn btn-green btn-card-lg" href="https://dot.cards/mechmurph?s=s" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h5"/></svg>
+        View Murph's Card
+      </a>
+    </div>
+
+    <!-- Formspree wiring:
+         1. Create a free form at formspree.io (recipient = info@mechmurph.com).
+         2. Copy your endpoint and replace [YOUR_FORM_ID] below.
+         That's the only change needed to start receiving submissions. -->
+    <form class="form" action="https://formspree.io/f/xaewyznq" method="POST">
+      <!-- Sets the subject line of the notification email you receive -->
+      <input type="hidden" name="_subject" value="New message from mechmurph.com" />
+      <!-- Honeypot: hidden from people, catches spam bots. Leave it empty. -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
+
       <div class="field-row">
         <div class="field">
           <label for="first">First name <span class="req">(required)</span></label>
@@ -70,6 +90,13 @@
       <div>
         <div class="footer-brand">MechMurph</div>
         <p>Small-engine repair · San Antonio, TX</p>
+      </div>
+      <div class="footer-card">
+        <a class="btn-card" href="https://dot.cards/mechmurph?s=s" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h5"/></svg>
+          Murph's Digital Card
+        </a>
+        <span class="small">Tap to save the shop to your phone</span>
       </div>
       <div class="footer-contact">
         <a href="mailto:info@mechmurph.com">info@mechmurph.com</a><br />
